@@ -55,12 +55,12 @@ class PS : public D,public IPrintableDevice,public IScanner
         //Delegation
         //PS class delegates the print and scan tasks to the injected objects
         void print(){
-            pObj.print();
+            pObj->print();
         }
         //Delegation
         //PS class delegates the print and scan tasks to the injected objects
         void scan(){
-            sObj.scan();
+            sObj->scan();
         }
 };
 
@@ -85,7 +85,7 @@ int main()
 {
     P pObj;
     S sObj;
-    PS psObj{10,&pObj,&sObj};
+    PS psObj{10,&sObj,&pObj};
     printTask(&pObj);
     printTask(&psObj);
     scanTask(&sObj);
